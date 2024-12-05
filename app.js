@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const connectDB = require('./db')
 const authRoutes = require('./routes/login_routes');
+const hobbySubcategoryRoutes = require('./routes/hobby_subcategory_routes');
+const hobbycategoryRoutes = require('./routes/hobby_category_routes');
+
 
 //Models
 const Login = require('./models/login_model')
@@ -21,6 +24,9 @@ connectDB().then(() => {
 
 //Config JSON response
 app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
+
 
 
 //Open route - public route
@@ -30,3 +36,5 @@ app.get('/', (req, res)=>{
 
 // Rotas de autenticação
 app.use('/auth', authRoutes);
+app.use('/hobby', hobbySubcategoryRoutes);
+app.use('/hobby', hobbycategoryRoutes);

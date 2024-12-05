@@ -1,9 +1,9 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Hobby_category_schema = new mongoose.Schema( {
-    icon_hobby: {type: String, required: true},
-    name: {type: String, required: true}
-})
+const Hobby_CategorySchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    subcategory: { type: mongoose.Schema.Types.ObjectId, ref: 'Hobby_subcategory', required: true } // Referência à subcategoria
+});
 
-const Hobby_categoria = mongoose.model('Hobby_categoria', Hobby_category_schema);
-module.exports = Hobby_categoria;
+const Hobby_Category = mongoose.model('Hobby_Category', Hobby_CategorySchema);
+module.exports = Hobby_Category;
